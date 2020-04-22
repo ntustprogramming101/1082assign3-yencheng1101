@@ -133,7 +133,7 @@ void draw() {
      
     //life
     for(int l=0; l < playerHealth ;l++){
-     image(life,10+70*l,10,50,50);
+     image(life,10+70*l,10);
      }
 		// Player
 
