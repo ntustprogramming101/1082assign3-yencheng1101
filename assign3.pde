@@ -8,7 +8,17 @@ final int START_BUTTON_X = 248;
 final int START_BUTTON_Y = 360;
 
 PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered;
-PImage bg, soil8x24;
+PImage bg, soil8x24,life;
+PImage soil0,soil1,soil2,soil3,soil4,soil5;
+PImage stone1,stone2;
+PImage groundhogIdle,groundhogDown,groundhogLeft,groundhogRight;
+
+float soilWidth=80,soilHeight=80;
+
+final int COUNT=8;
+float stone1X,stone1Y;
+float spacing = 80;
+
 
 // For debug function; DO NOT edit or remove this!
 int playerHealth = 0;
@@ -26,10 +36,20 @@ void setup() {
 	restartNormal = loadImage("img/restartNormal.png");
 	restartHovered = loadImage("img/restartHovered.png");
 	soil8x24 = loadImage("img/soil8x24.png");
+  soil0 = loadImage("img/soil0.png");
+  soil1 = loadImage("img/soil1.png");
+  soil2 = loadImage("img/soil2.png");
+  soil3 = loadImage("img/soil3.png");
+  soil4 = loadImage("img/soil4.png");
+  soil5 = loadImage("img/soil5.png");
+  stone1 = loadImage("img/stone1.png");
+  stone2 = loadImage("img/stone2.png");
+  life = loadImage("img/life.png");
 }
 
 void draw() {
-    /* ------ Debug Function ------ 
+
+  /* ------ Debug Function ------ 
 
       Please DO NOT edit the code here.
       It's for reviewing other requirements when you fail to complete the camera moving requirement.
@@ -82,8 +102,39 @@ void draw() {
 		rect(0, 160 - GRASS_HEIGHT, width, GRASS_HEIGHT);
 
 		// Soil - REPLACE THIS PART WITH YOUR LOOP CODE!
-		image(soil8x24, 0, 160);
-
+    for(int y =160; y<27*soilHeight; y+=soilHeight){ 
+      for(int x=0; x<width; x+=soilWidth){
+        if(y <=5*soilHeight ) {
+        image(soil0,x,y );   
+        }else if(y<=9*soilHeight){
+        image(soil1,x,y );  
+        }else if(y<=13*soilHeight){
+        image(soil2,x,y );
+        }else if(y<=17*soilHeight){
+        image(soil3,x,y );
+        }else if(y<=21*soilHeight){
+        image(soil4,x,y );
+        }else{
+        image(soil5,x,y );
+        }
+      }
+    }
+    
+    //stone 1-8
+    stone1X=0;
+    stone1Y=80;
+     for(int j=1;j<COUNT+1;j++){
+       for(int i=0;i<COUNT;i++){
+       stone1X= i*spacing;
+       stone1Y +=spacing;
+       image(stone1,stone1X,stone1Y);
+       }
+     }
+     
+    //life
+    for(int l=0; l < playerHealth ;l++){
+     image(life,10+70*l,10,50,50);
+     }
 		// Player
 
 		// Health UI
