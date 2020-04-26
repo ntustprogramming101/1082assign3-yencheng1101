@@ -1,3 +1,5 @@
+
+
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = 0;
 
@@ -102,7 +104,7 @@ void draw() {
 		rect(0, 160 - GRASS_HEIGHT, width, GRASS_HEIGHT);
 
 		// Soil - REPLACE THIS PART WITH YOUR LOOP CODE!
-    for(int y =160; y<27*soilHeight; y+=soilHeight){ 
+    for(int y =160; y<26*soilHeight; y+=soilHeight){ 
       for(int x=0; x<width; x+=soilWidth){
         if(y <=5*soilHeight ) {
         image(soil0,x,y );   
@@ -197,3 +199,4 @@ void keyPressed(){
 
 void keyReleased(){
 }
+
